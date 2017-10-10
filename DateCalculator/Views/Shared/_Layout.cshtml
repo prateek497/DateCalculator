@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="date calculator, age calculator, calculator, business calculator, online calender, year, month, date,calendar, prateek, prateek gangwar, gangwar">
+    <meta name="robots" content="" />
+    <meta name="googlebot" content=""/>
+    <meta name="description" content="Free calculators for the difference between two dates. Calculator which adds or subtracts days, weeks, months and years">
+    <meta name="author" content="Prateek Gangwar">
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    
+    <link alt="date calculator" href="../../images/durationicon.png" rel="icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+</head>
+<body class="font">
+    <div class="site-header">
+        <header class="container">
+            <h1 class="page-header">
+                @Html.ActionLink("Date Calculator", "DateCalculator", "DateCalculator")
+                <small>A simple date calculator</small>
+            </h1>
+        </header>
+    </div>
+    <div class="site-subheader">
+        <header class="container ">
+            <h5>
+                @Html.ActionLink("Date Calculator", "DateCalculator", "DateCalculator")
+                @Html.ActionLink("Age Calculator", "AgeCalculator", "DateCalculator")
+                @Html.ActionLink("Business Calculator", "BussinessCalculator", "DateCalculator")
+
+                @Html.ActionLink("Contact me", "ContactMe", "ContactMe", "", new { style = "float: right" })
+            </h5>
+        </header>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            @RenderBody()
+            <br />
+        </div>
+        <footer class="border-top">
+            <br />
+            <div class="container text-center ">
+                <h5>&copy; @DateTime.UtcNow.Year Date Calculator</h5>
+            </div>
+        </footer>
+        @Scripts.Render("~/bundles/jquery")
+    </div>
+</body>
+</html>

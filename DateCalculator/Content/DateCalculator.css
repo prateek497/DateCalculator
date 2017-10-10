@@ -1,0 +1,101 @@
+﻿.font {
+    font-family: calibri;
+}
+
+.border-temporary {
+    border: 1px solid black;
+}
+
+.themecolor {
+    background-color: #3A5795;
+    color: white;
+}
+
+    .themecolor h4:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: whitesmoke;
+    }
+
+.labelcolor {
+    color: #1B809E;
+}
+
+.site-header {
+    background: #2c3e50; /*#3498db*/
+    color: #eee;
+}
+
+    .site-header .page-header a:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .site-header .page-header {
+        border: 0;
+        padding: 0;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+        .site-header .page-header small {
+            color: #ddd;
+            font-size: 16pt;
+        }
+
+    .site-header a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+.resultpanel {
+    padding: 30px 30px 30px 30px;
+    border-radius: 5px;
+}
+
+.site-subheader {
+    background: #EC7F3E;
+    color: #eee;
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
+
+    .site-subheader a {
+        color: #fff;
+        padding-right: 5px;
+    }
+
+        .site-subheader a:hover {
+            font-weight: bold;
+            color: #fff;
+        }
+
+.border-bottom {
+    border-bottom: 1px solid lightgray;
+}
+
+.border-top {
+    border-top: 1px solid lightgray;
+}
+
+.dash {
+    vertical-align: top;
+    display: inline-block;
+    font-size: 24px;
+}
+
+.datetextbox {
+    padding-left: 5px;
+}
+
+.ui-autocomplete {
+    cursor: pointer;
+    height: 325px;
+    overflow-y: scroll;
+}
+
+.ui-datepicker-trigger {
+    height: 35px;
+    margin-left: -3px;
+    cursor: pointer;
+}

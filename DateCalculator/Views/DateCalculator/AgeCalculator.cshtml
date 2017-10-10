@@ -1,0 +1,195 @@
+﻿@model DateCalculator.Models.AgeViewModel
+
+@{
+    ViewBag.Title = "Age Calculator";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="border-bottom">
+                <h3>Calculate your age</h3>
+            </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <label class="h4">Date of birth</label>
+                </div>
+                <div class="datetextbox">
+                    <div>
+                        <label style="padding-left:5px; padding-right: 20px;">Date:</label>
+                        <label style="padding-left:5px; padding-right: 20px;">Month:</label>
+                        <label style="padding-left:5px; padding-right: 20px;">Year:</label>
+                        <label>Date:</label>
+                    </div>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.BirthDate, "", new
+                            {
+                                @class = "form-control",
+                                type = "text",
+                                placeholder = "dd",
+                                id = "birthdate",
+                                style = "width:45px",
+                                pattern = "[0-9]*",
+                                maxlength = "2",
+                                required = "required"
+                            })
+                            <span class="dash">/</span>
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.BirthMonth, "", new
+                            {
+                                @class = "form-control",
+                                type = "text",
+                                placeholder = "mm",
+                                id = "birthmonth",
+                                style = "width:50px",
+                                pattern = "[0-9]*",
+                                maxlength = "2",
+                                required = "required"
+                            })
+                            <span class="dash">/</span>
+                        </div>
+                        <div class="form-group input-group date">
+                            @Html.TextBoxFor(m => m.BirthYear, "", new
+                            {
+                                @class = "form-control",
+                                type = "text",
+                                placeholder = "yyyy",
+                                id = "birthyear",
+                                style = "width:60px",
+                                pattern = "[0-9]*",
+                                maxlength = "4",
+                                required = "required"
+                            })
+
+                            <input type="text" id="birthdatepicker" style="width: 0px; height: 0px; visibility: hidden">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <label class="h4">Age at the date of</label>
+                </div>
+                <div class="datetextbox">
+                    <div>
+                        <label style="padding-left:5px; padding-right: 20px;">Date:</label>
+                        <label style="padding-left:5px; padding-right: 20px;">Month:</label>
+                        <label style="padding-left:5px; padding-right: 20px;">Year:</label>
+                        <label>Date:</label>
+                    </div>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.AsOfNowDate, "", new
+                            {
+                                @class = "form-control",
+                                type = "text",
+                                placeholder = "dd",
+                                id = "asofnowdate",
+                                style = "width:45px",
+                                pattern = "[0-9]*",
+                                maxlength = "2",
+                                required = "required"
+                            })
+                            <span class="dash">/</span>
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.AsOfNowMonth, "", new
+                            {
+                                @class = "form-control",
+                                type = "text",
+                                placeholder = "mm",
+                                id = "asofnowmonth",
+                                style = "width:50px",
+                                pattern = "[0-9]*",
+                                maxlength = "2",
+                                required = "required"
+                            })
+                            <span class="dash">/</span>
+                        </div>
+                        <div class="form-group input-group date">
+                            @Html.TextBoxFor(m => m.AsOfNowYear, "", new
+                            {
+                                @class = "form-control",
+                                type = "text",
+                                placeholder = "yyyy",
+                                id = "asofnowyear",
+                                style = "width:60px",
+                                pattern = "[0-9]*",
+                                maxlength = "4",
+                                required = "required"
+                            })
+
+                            <input type="text" id="asofnowdatepicker" style="width: 0px; height: 0px; visibility: hidden">
+
+                        </div>
+                        <div class="form-group">
+                            <h4>
+                                &nbsp;&nbsp;<a style="cursor: pointer" onclick="return filltextbox('asofnow');">Today</a>
+                            </h4>
+                        </div>
+                        <script type="text/javascript">
+                            filltextbox('asofnow');
+                        </script>
+                    </div>
+                </div>
+                <br />
+            </div>
+            <div class="col-md-8">
+                <div class="datetextbox">
+                    <input type="submit" class="btn btn-primary" value="Calculate age" />
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+
+        @if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+        {
+            <div class="alert alert-danger">
+                <a class="close" data-dismiss="alert">&times;</a>
+                @Html.ValidationSummary()
+            </div>
+        }
+
+        @if (Model.HasResult)
+        {
+            <div class="datetextbox">
+                <div class="container-fluid bg-success resultpanel">
+                    <div class="col-md-6" style="padding-left: 30px">
+                        <div style="margin-top:-15px;">
+                            <h3><strong>You are @Model.LongDurations</strong></h3>
+                            <h4><strong>or @Model.Days.ToString("#,##0") day(s) old</strong></h4>
+                            <h4><strong>You born on @Model.StartDate.DayOfWeek</strong></h4>
+                        </div>
+                        <div>
+                            <h5>
+                                Your next birthday is on @Model.NextBirthday.DayOfWeek
+                            </h5>
+                        </div>
+                        <div>
+                            <h5>
+                                And, your next birthday is in @Model.NextBirthdayDayLeft.ToString("#,##0") day(s)
+                            </h5>
+                            <h5>or @Model.NextBirthdayLongDurations</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="padding-right: 30px">
+                        <h4> <b> @Model.Days.ToString("#,##0")  day(s) </b> can be converted into:</h4>
+                        <ul>
+                            <li><b>@Model.Hours.ToString("#,##0")</b> Hour(s)</li>
+                            <li><b>@Model.Minutes.ToString("#,##0")</b> Minute(s)</li>
+                            <li><b>@Model.Seconds.ToString("#,##0")</b> Second(s)</li>
+                            <li><b>@Model.Weeks</b></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

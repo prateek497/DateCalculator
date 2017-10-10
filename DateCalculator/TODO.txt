@@ -1,0 +1,6 @@
+﻿Current Version-
+
+<--------------------------------------------------->
+Future Feature-
+1-Option to find n duration date.
+2-Option for custom exclude and include days.
